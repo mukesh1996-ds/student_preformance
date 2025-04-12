@@ -22,7 +22,9 @@ class DataIngestion:
         ## Reading from the mqsql database 
         try:
             ## Reading code
-            df = read_sql_data()
+            #df = read_sql_data()
+            df=pd.read_csv(os.path.join('notebook/data','raw.csv')) ## Remove at the end
+
             logging.info("Reading from MySql database")
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True) ## Making the aritfacts folder
             df.to_csv(self.ingestion_config.raw_data_path,index=False,header=True)
